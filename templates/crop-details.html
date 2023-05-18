@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Crop details</title>
+    <style>
+    	h1 {
+			text-align: center;
+		}
+	</style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+</head>
+<body>
+	<h1>Crop details</h1>
+	<form method="post">
+        <div class="data-container">
+		<label for="date">Select a date:</label>
+		<input type="date" id="date" name="date" value="{{ selected_date }}" onchange="this.form.submit()">
+        </div>
+	</form>
+	<br>
+    <div class="table-container"></br>
+	<table>
+		<thead>
+			<tr>
+				<th>crop-name</th>
+				<th>crop-type</th>
+				<th>crop-details</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in data %}
+			<tr>
+				<td>{{ row[0] }}</td>
+				<td>{{ row[1] }}</td>
+				<td>{{ row[2] }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    </div>
+</body>
+</html>
